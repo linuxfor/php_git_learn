@@ -6,7 +6,7 @@
 echo "Today is " . date("Y/m/d") . "<br>";
 echo "Today is " . date("Y.m.d") . "<br>";
 echo "Today is " . date("Y-m-d") . "<br>";
-//echo "Today is " . date("1");
+echo "The year is " . date("Y");
 ?>
 
 </body>
