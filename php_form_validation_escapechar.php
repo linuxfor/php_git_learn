@@ -1,23 +1,52 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<style>
+.error {color: #FF0000;}
+</style>
 </head>
 <body>
 
 <?php
 //define variable and set to empty values
 $name = $email = $gender = $comment = $website = "";
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
 //$tips = "";
 
 //检查表单是否使用$_SERVER["REQUEST_METHOD"]进行提交，
 //若REQUEST_METHOD是POST，那么表单已被提交，并且对其进行验证；
 //若未提交，则跳过验证并显示一个空白表单
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$name = test_input($_POST["name"]);
-	$email = test_input($_POST["email"]);
-	$website = test_input($_POST["website"]);
-	$comment = test_input($_POST["comment"]);
-	$gender = test_input($_POST["gender"]);
+	if (empty($_POST["name"])) {
+		$nameErr = "姓名是必填的";
+	} else {
+		$name = test_input($_POST["name"]);
+	}
+
+	if (empty($_POST["email"])) {
+		$emailErr = "邮箱地址是必填的";
+	} else {
+			$email = test_input($_POST["email"]);
+	}
+
+	if (empty($_POST["website"])) {
+		$website = "";
+	} else {
+			$website = test_input($_POST["website"]);
+	}
+
+	if (empty($_POST["comment"])) {
+		$comment = "";
+	} else {
+		$comment = test_input($_POST["comment"]);
+	}
+
+	if (empty($_POST["gender"])) {
+		$genderErr = "性别是必选的";
+	} else {
+		$gender = test_input($_POST["gender"]);
+	}
+
 //}else {
 //	$tips = "Please input something again!";
 }
@@ -33,18 +62,23 @@ function test_input($data){
 
 
 <h2>PHP validation sample</h2>
+<p><span class="error">* 必需的字段</span></p>
 <form method="post" action="/php_git_learn/php_form_validation_escapechar.php">
 	Name: <input type="text" name="name">
+	<span class="error">* <?php echo $nameErr; ?></span>
 	<br><br>
 	Email: <input type="text" name="email">
+	<span class="error">* <?php echo $emailErr; ?></span>
 	<br><br>
 	URL: <input type="text" name="website">
+	<span class="error">* <?php echo $websiteErr; ?></span>
 	<br><br>
 	Comment: <textarea name="comment" rows="5" cols="40"></textarea>
 	<br><br>
 	Gender:
 	<input type="radio" name="gender" value="female">Female
 	<input type="radio" name="gender" value="male">Male
+	<span class="error">* <?php echo $genderErr; ?></span>
 	<br><br>
 	<input type="submit" name="submit" value="submit">
 </form>
