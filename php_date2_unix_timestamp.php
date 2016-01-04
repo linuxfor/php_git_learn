@@ -23,5 +23,12 @@ while ($startdate < $enddate) {
 }
 ?>
 
+<?php
+echo "<br>";
+$d1 = strtotime("December 31");
+$d2 = ceil(($d1-time())/60/60/24);
+echo "距离十二月三十一日还有：" . $d2 . " 天。";
+?>
+
 </body>
 </html>
