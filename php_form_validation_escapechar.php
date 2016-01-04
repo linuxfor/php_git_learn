@@ -21,18 +21,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$nameErr = "姓名是必填的";
 	} else {
 		$name = test_input($_POST["name"]);
+		//检查姓名是否包含字母和空白字符
+		if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+			$nameErr = "只允许字母和空格";
+		}
 	}
 
 	if (empty($_POST["email"])) {
 		$emailErr = "邮箱地址是必填的";
 	} else {
-			$email = test_input($_POST["email"]);
+		$email = test_input($_POST["email"]);
+		if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
+			$emailErr = "无效的邮箱地址格式";
+		}
 	}
 
 	if (empty($_POST["website"])) {
 		$website = "";
 	} else {
-			$website = test_input($_POST["website"]);
+		$website = test_input($_POST["website"]);
+		if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $website)) {
+			$websiteErr = "无效的URL";
+		}
 	}
 
 	if (empty($_POST["comment"])) {
