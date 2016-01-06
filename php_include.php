@@ -2,13 +2,11 @@
 <html>
 <body>
 
-<div class="menu">
-<?php include 'menu.php'?>
-</div>
-
 <h1>Welcome to access my homepage</h1>
-<p>Some text</p>
-<p>Some more text</p>
+<?php
+include 'vars.php';
+echo "我有一辆" . $color . $car . "。";
+?>
 
 </body>
 </html>
