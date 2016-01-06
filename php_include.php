@@ -2,10 +2,13 @@
 <html>
 <body>
 
+<div class="menu">
+<?php include 'menu.php'?>
+</div>
+
 <h1>Welcome to access my homepage</h1>
-<p>This is a paragraph</p>
-<p>This is another paragraoh</p>
-<?php include 'footer.php';?>
+<p>Some text</p>
+<p>Some more text</p>
 
 </body>
 </html>
