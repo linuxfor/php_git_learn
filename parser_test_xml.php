@@ -1,4 +1,5 @@
 <?php
+
 //initialize the XML parser
 $parser = xml_parser_create();
 
@@ -51,9 +52,9 @@ $fp = fopen("./test.xml", "r");
 //read data
 while ($data = fread($fp, 4096))
 {
-	xml_parse($parser, $data, feof($fp)) or
-	die(sprintf("XML Error: %s at line %d", xml_error_string(xml_get_error_code($parser)),
-	xml_get_current_line_number($parser)));
+	xml_parse($parser, $data, feof($fp)) 
+	or die(sprintf("XML Error: %s at line %d",					xml_error_string(xml_get_error_code($parser)),
+		xml_get_current_line_number($parser)));
 }
 
 //free the XML parser
