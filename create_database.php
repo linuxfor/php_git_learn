@@ -16,15 +16,17 @@ else
 	echo "Error creating databse: ".mysql_error();
 }
 
-//create table in my_db database
+//select the database before creating table
 mysql_select_db("my_db", $con);
 $sql = "CREATE TABLE Persons
 (
+	personID int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(personID),
 	First varchar(15),
 	LastName varchar(15),
 	Age int
 )";
-
+//create table in my_db database
 mysql_query($sql, $con);
 
 //close database
