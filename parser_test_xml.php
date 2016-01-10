@@ -11,7 +11,7 @@ function start($parser, $element_name, $element_attrs)
 			echo "-- Note --<br/>";
 		break;
 		case "TO":
-			echo "TO: ";
+			echo "To: ";
 		break;
 		case "FROM":
 			echo "From: ";
@@ -58,4 +58,13 @@ while ($data = fread($fp, 4096))
 
 //free the XML parser
 xml_parser_free($parser);
+
+/*
+//test result
+-- Note --
+To: George
+From: John
+Heading: Reminder
+Message: Don't forget the meeting!
+*/
 ?>
